@@ -1,5 +1,8 @@
 ## Performance Improvements
 
+In root directory the files are not compressed.
+Under 'build' directory the html, css and js files are compressed.
+
 ### Portfolio index.html Optimization
 
 1. Media tag for print.css
@@ -7,7 +10,7 @@
 3. Inline CSS
 4. Put Google Analytics and JS file to the footer and load asynchronously
 5. Optimize images
-6. Minify HTML, CSS and JS
+6. Minify HTML, CSS and JS with Gulp
 
 ### Pizza Site views/pizza.html and 60 FPS Optimization
 1. Eliminating the "Forced synchronous layout" performance bottleneck - putting the static values out of the loop  (main.js line 522)
@@ -16,7 +19,7 @@
 4. Inline css
 5. Configure the viewport
 6. Optimize images
-7. Minify HTML, CSS and JS
+7. Minify HTML and CSS with Gulp
 
 
 ## Website Performance Optimization portfolio project
