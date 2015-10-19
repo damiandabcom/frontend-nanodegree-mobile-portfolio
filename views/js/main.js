@@ -491,14 +491,23 @@ function updatePositions() {
   //Since we are only using 5 distinct values of the phase, we can move the calculation out of the loop?
   var phaseValue = [];
   for (var i = 0; i < 5; i++) {
-    phaseValue[i] = Math.sin((scrollT) + i);
+    phaseValue[i] = (Math.sin(scrollT + (i % 5))*100);
   }
 
   var itemsLength = items.length;
   for (var j = 0; j < itemsLength; j++) {
-    items[j].style.left = items[j].basicLeft + 100 * phaseValue[j % 5] + 'px';
+    items[j].style.left = items[j].basicLeft + phaseValue[j % 5] + 'px';
   }
 
+
+  /*
+  items[j].style.transform = 'translateX(' + phaseValue[j % 5] + 'px';
+
+
+  var pixelsString = items[i].basicLeft + 100 * phases[i % 5] - 1250 + 'px';
+      items[i].style.transform = 'translateX(' + pixelsString + ')';
+
+  */
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -518,22 +527,27 @@ window.addEventListener('scroll', updatePositions);
 //Number of rows (based on the window height)
 //Number of background pizzas = rows * columns
 document.addEventListener('DOMContentLoaded', function() {
-  var s = 256;
-  var elem;
+  var s = 256; // size of the col and row
 
-  var rowsViewport = Math.round(window.innerHeight / s);
-  var colsViewport = Math.round(window.innerWidth / 100);
-  var numberPizzas = rowsViewport * colsViewport;
+  var elem;
+  var innerHeight = window.innerHeight;
+  var innerWidth = window.innerWidth;
+  var rows = Math.round(innerHeight / s);
+  var cols = Math.round(innerWidth / s);
+  var numberPizzas = rows * cols;
+
+  console.log("Number of Pizzas:" + numberPizzas);
 
   var movingPizzas = document.getElementById("movingPizzas1");
+
   for (var i = 0; i < numberPizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % colsViewport) * s;
-    elem.style.top = (Math.floor(i / colsViewport) * s) + 'px';
+    elem.basicLeft = (i % cols) * s;
+    elem.style.top = (Math.floor(i / cols) * s) + 'px';
     movingPizzas.appendChild(elem);
   }
   updatePositions();

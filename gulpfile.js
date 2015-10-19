@@ -73,3 +73,4 @@ gulp.task('js-pizza', function() {
 
 
 gulp.task('html-css-js', ['minify-inline', 'usemin', 'minify-inline-p', 'usemin-p', 'js-portfolio', 'js-pizza']);
+gulp.task('pizza', ['minify-inline-p', 'usemin-p', 'js-pizza']);
