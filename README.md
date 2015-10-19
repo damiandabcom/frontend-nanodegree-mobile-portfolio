@@ -15,13 +15,17 @@ Test Live with following link: http://performance.falconsun.com
 6. Minify HTML, CSS and JS with Gulp
 
 ### Pizza Site views/pizza.html and 60 FPS Optimization
-1. Eliminating the "Forced synchronous layout" performance bottleneck - putting the static values out of the loop  (main.js line 522)
-2. Optimizing function chagePizzaSizes (main.js line 455)
+
+1. Eliminating the "Forced synchronous layout" performance bottleneck - putting the scrollTop and phase calculation out of the loop  
+2. Optimizing function chagePizzaSizes and removing the "determineDx" function
 3. Optmizing responsiveness of the page with CSS "will-change: transform;"
-4. Inline css
+"transform: translateZ(0);", "transform: translate3d(0,0,0);" and "backface-visibility:hidden;"
+4. Inline CSS
 5. Configure the viewport
 6. Optimize images
 7. Minify HTML and CSS with Gulp
+8. Replacing querySelector() and querySelectorAll() with getElementById and getElementsByClassName
+9. Calculating the number of pizzas to display
 
 
 ## Website Performance Optimization portfolio project
