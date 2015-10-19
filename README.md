@@ -3,7 +3,9 @@
 In root directory the files are not compressed.
 Under 'build' directory the html, css and js files are compressed.
 
-Test Live with following link: http://performance.falconsun.com
+Test Live with following links:
+1. http://performance.falconsun.com
+2. http://performance.falconsun.com/views/pizza.html      
 
 ### Portfolio index.html Optimization
 
