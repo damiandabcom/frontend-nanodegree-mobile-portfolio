@@ -19,7 +19,7 @@ Test Live with following links:
 
 ### Pizza Site views/pizza.html and 60 FPS Optimization
 
-1. Eliminating the "Forced synchronous layout" performance bottleneck - putting the scrollTop and phase calculation out of the loop  
+1. Eliminating the "Forced synchronous layout" performance bottleneck and improving performance - putting the scrollTop and phase calculation out of the loop, replacing 'style left' with 'transform'
 2. Optimizing function chagePizzaSizes and removing the "determineDx" function
 3. Optmizing responsiveness of the page with CSS "will-change: transform;"
 "transform: translateZ(0);", "transform: translate3d(0,0,0);" and "backface-visibility:hidden;"

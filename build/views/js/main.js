@@ -479,7 +479,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositions() {
+ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
@@ -489,25 +489,16 @@ function updatePositions() {
   var scrollT = document.body.scrollTop / 1250;
 
   //Since we are only using 5 distinct values of the phase, we can move the calculation out of the loop?
-  var phaseValue = [];
+  var phase = [];
   for (var i = 0; i < 5; i++) {
-    phaseValue[i] = (Math.sin(scrollT + (i % 5))*100);
+    phase[i] = Math.sin(scrollT + i) * 100 + 'px';
   }
-
+  // replacing 'style left' with 'transform'
   var itemsLength = items.length;
   for (var j = 0; j < itemsLength; j++) {
-    items[j].style.left = items[j].basicLeft + phaseValue[j % 5] + 'px';
+    items[j].style.transform = 'translateX(' + phase[j % 5] + ')';
   }
 
-
-  /*
-  items[j].style.transform = 'translateX(' + phaseValue[j % 5] + 'px';
-
-
-  var pixelsString = items[i].basicLeft + 100 * phases[i % 5] - 1250 + 'px';
-      items[i].style.transform = 'translateX(' + pixelsString + ')';
-
-  */
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -543,10 +534,10 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < numberPizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizza-77.png";
     elem.style.height = "100px";
-    elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    elem.style.width = "77px";
+    elem.style.left = (i % cols) * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     movingPizzas.appendChild(elem);
   }
